@@ -36,3 +36,23 @@ export class QuestionnaireResponseItem {
 export class Answer {
     valueString: string = ""
 }
+
+export class Patient {
+    resourceType: string = "Patient"
+    id: string = ""
+    name: Name = new Name()
+    gender: string = ""
+    birthDate: string = ""
+}
+
+export class Name {
+    family: string = ""
+    given: string = ""
+}
+
+export class Practitioner {
+    resourceType: string = "Practitioner"
+    id: string = ""
+    name: Name = new Name()
+    gender: string = ""
+}
