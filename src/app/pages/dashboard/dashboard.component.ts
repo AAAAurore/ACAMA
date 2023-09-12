@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { WebserviceService } from 'src/app/webservice/webservice.service';
 import { Patient, Practitioner } from 'src/app/questionnaire';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -32,5 +33,32 @@ export class DashboardComponent {
       this.patients = data;
       console.log(this.patients)
     })
+  }
+
+  getAddress(){
+    let address: string = "";
+
+    if(this.practitioner.address != undefined){
+      address = (this.practitioner.address.line != undefined
+        ? this.practitioner.address.line + "< br />"
+        : "");
+      address = (this.practitioner.address.city != undefined
+        ? this.practitioner.address.city + "< br />"
+        : "");
+      address = (this.practitioner.address.state != undefined
+        ? this.practitioner.address.state + "< br />"
+        : "");
+      address = (this.practitioner.address.postalCode != undefined
+        ? this.practitioner.address.postalCode + "< br />"
+        : "");
+      address = (this.practitioner.address.country != undefined
+        ? this.practitioner.address.country + "< br />"
+        : "");
+      address = (this.practitioner.telecom.value != undefined
+        ? this.practitioner.telecom.value
+        : "");
+    }
+
+    return address;
   }
 }

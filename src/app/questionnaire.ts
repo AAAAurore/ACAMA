@@ -41,7 +41,7 @@ export class Answer {
 export class Patient {
     resourceType: string = "Patient"
     id: string = ""
-    name: Name = new Name()
+    name: Name[] = []
     gender: string = ""
     birthDate: string = ""
 }
@@ -54,6 +54,20 @@ export class Name {
 export class Practitioner {
     resourceType: string = "Practitioner"
     id: string = ""
-    name: Name = new Name()
+    name: Name[] = []
     gender: string = ""
+    address: Address = new Address
+    telecom: ContactPoint = new ContactPoint
+}
+
+export class Address{
+    line: string = ""
+    city: string = ""
+    state: string = ""
+    postalCode: string = ""
+    country: string = ""
+}
+
+export class ContactPoint {
+    value: string = ""
 }
