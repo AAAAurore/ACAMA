@@ -1,1 +1,8 @@
-<p>dashboard works!</p>
+<div class="medecin">
+    Nom : {{ practitioner.name != undefined ? practitioner.name.family : "" }}<br />
+    Prénom : {{ practitioner.name != undefined ? practitioner.name.given : "" }}<br />
+    {{ getGender() }}<br />
+    Adresse :
+        <div [innerHTML]="getAddress()"></div>
+    <img src="/assets/medecin.png" style="height: 100px;"/>
+</div>
