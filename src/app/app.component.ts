@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WebserviceService } from './webservice/webservice.service';
 import { Patient, Practitioner } from './questionnaire';
 
@@ -10,12 +11,18 @@ import { Patient, Practitioner } from './questionnaire';
 })
 export class AppComponent {
   title = 'ACAMA';
-  practitioner: Practitioner = new Practitioner();
-  patients: Array<Patient> = [];
 
   constructor(
-    public webService: WebserviceService
-  ) {}
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    public webService: WebserviceService,
+  ){}
+
+  goToDashboard(){
+    this.router.navigate([''], { relativeTo: this.activatedRoute });
+  }
+  practitioner: Practitioner = new Practitioner();
+  patients: Array<Patient> = [];
 
   ngOnInit() {
     this.loadPractitioner();
