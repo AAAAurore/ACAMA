@@ -4,9 +4,10 @@
     {{ getGender() }}<br />
     Adresse :
         <div [innerHTML]="getAddress()"></div>
-    <img src="/assets/medecin.png" style="height: 100px;"/>
+    <img class="profil" src="/assets/medecin.png"/>
 </div>
 <!-- <div class="patients" *ngFor="let patient of patients"> -->
+<div class="patients">
     <mat-card class="patient">
         <mat-card-header>
         <mat-card-title></mat-card-title>
@@ -49,4 +50,4 @@
         <button mat-button>SHARE</button>
         </mat-card-actions>
     </mat-card>
-<!-- </div> -->
+</div>

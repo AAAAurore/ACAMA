@@ -22,6 +22,12 @@ body {
 .medecin {
     border: solid;
     border-radius: 25px;
-    float: right;
+    margin-left: 1200px;
     padding: 20px;
+}
+
+.profil {
+    display: flex;
+    height: 100px;
+    margin: auto;
 }
