@@ -7,6 +7,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PatientComponent } from './pages/patient/patient.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StatistiquesComponent } from './pages/statistiques/statistiques.component';
+import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -20,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule
