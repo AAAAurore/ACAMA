@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    margin: 30px;
 }
 
 body {
@@ -8,6 +9,12 @@ body {
 }
 
 .logo {
+    display: block;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.home {
     cursor: pointer;
     height: 100px;
     margin-bottom: 20px;
