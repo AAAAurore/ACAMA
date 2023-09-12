@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { WebserviceService } from 'src/app/webservice/webservice.service';
 import { Patient, Practitioner } from 'src/app/questionnaire';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +14,8 @@ export class DashboardComponent {
   patients: Array<Patient> = [];
 
   constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     public webService: WebserviceService,
   ){}
 
@@ -33,6 +36,10 @@ export class DashboardComponent {
       this.patients = data;
       console.log(this.patients)
     })
+  }
+
+  goToStatistiques(){
+    this.router.navigate(['statistiques'], { relativeTo: this.activatedRoute });
   }
 
   getAddress(){

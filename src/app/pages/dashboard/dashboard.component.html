@@ -1,9 +1,12 @@
-<div class="medecin">
-    Nom : {{ practitioner.name != undefined ? practitioner.name[0].family : "" }}<br />
-    Prénom : {{ practitioner.name != undefined ? practitioner.name[0].given : "" }}<br />
-    Adresse :
-        <div [innerHTML]="getAddress()"></div>
-    <img class="profil" src="/assets/medecin.png"/>
+<div style="display: flex;">
+    <button mat-raised-button color="primary" (click)="goToStatistiques()">Statistiques</button>
+    <div class="medecin">
+        Nom : {{ practitioner.name != undefined ? practitioner.name[0].family : "" }}<br />
+        Prénom : {{ practitioner.name != undefined ? practitioner.name[0].given : "" }}<br />
+        Adresse :
+            <div [innerHTML]="getAddress()"></div>
+        <img class="profil" src="/assets/medecin.png"/>
+    </div>
 </div>
 <!-- <div class="patients" *ngFor="let patient of patients"> -->
 <div class="patients">
