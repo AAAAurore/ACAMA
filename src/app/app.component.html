@@ -1,5 +1,8 @@
-<img class="logo" src="/assets/logo.png"/>
-<button mat-mini-fab matTooltip="Primary" color="primary" class="home" homecolor="warn" aria-label="Retour à l'accueil" (click)="goToDashboard()">
-    <mat-icon>home</mat-icon>
-  </button>
+<div class="header">
+    <img class="logo" src="/assets/logo.png"/>
+    <button *ngIf="!isDashboard()" mat-fab matTooltip="Primary" color="primary" homecolor="warn" aria-label="Retour à l'accueil"
+        (click)="goToDashboard()" [style]="(isStatistiques() ? 'margin-right': 'margin-left') + ' : auto;'">
+        <mat-icon>home</mat-icon>
+    </button>
+</div>
 <router-outlet></router-outlet>

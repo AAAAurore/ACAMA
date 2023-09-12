@@ -8,14 +8,13 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.header {
+    display: grid;
+    margin-bottom: 20px;
+}
+
 .logo {
     display: block;
     height: 100px;
     margin-bottom: 10px;
-}
-
-.home {
-    cursor: pointer;
-    height: 100px;
-    margin-bottom: 20px;
 }

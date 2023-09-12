@@ -17,4 +17,12 @@ export class AppComponent {
   goToDashboard(){
     this.router.navigate([''], { relativeTo: this.activatedRoute });
   }
+
+  isDashboard(){
+    return this.router.url == "/";
+  }
+
+  isStatistiques(){
+    return this.router.url.includes("statistiques");
+  }
 }
