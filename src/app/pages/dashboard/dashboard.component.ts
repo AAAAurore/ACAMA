@@ -43,7 +43,7 @@ export class DashboardComponent {
 
   getAddress(){
     let address: string = "";
-    
+
     if(this.practitioner.address != undefined){
       address = (this.practitioner.address.line != undefined
         ? this.practitioner.address.line + "< br />"
