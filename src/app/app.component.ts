@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ACAMA';
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ){}
+
+  goToDashboard(){
+    this.router.navigate([''], { relativeTo: this.activatedRoute });
+  }
 }
