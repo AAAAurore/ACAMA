@@ -23,6 +23,7 @@ export class QuestionnaireResponse {
     resourceType: string = "QuestionnaireResponse";
     id: string = ""
     questionnaire: string = ""
+    source: string = ""
     status: string = "in-progress"
     item: QuestionnaireResponseItem[] = []
 }
