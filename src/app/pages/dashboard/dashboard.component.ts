@@ -35,12 +35,6 @@ export class DashboardComponent {
     })
   }
 
-  getGender(){
-    return this.practitioner.gender != undefined
-    ? (this.practitioner.gender == "male" ? "(Homme)" : "(Femme)")
-    : "";
-  }
-
   getAddress(){
     let address: string = "";
 
