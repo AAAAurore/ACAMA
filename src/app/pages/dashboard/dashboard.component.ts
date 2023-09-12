@@ -37,7 +37,7 @@ export class DashboardComponent {
 
   getGender(){
     return this.practitioner.gender != undefined
-    ? (this.practitioner.gender == "male" ? "Homme" : "Femme")
+    ? (this.practitioner.gender == "male" ? "(Homme)" : "(Femme)")
     : "";
   }
 

@@ -1,6 +1,6 @@
 <div class="medecin">
-    Nom : {{ practitioner.name != undefined ? practitioner.name.family : "" }}<br />
-    Prénom : {{ practitioner.name != undefined ? practitioner.name.given : "" }}<br />
+    Nom : {{ practitioner.name != undefined ? practitioner.name[0].family : "" }}<br />
+    Prénom : {{ practitioner.name != undefined ? practitioner.name[0].given : "" }}<br />
     {{ getGender() }}<br />
     Adresse :
         <div [innerHTML]="getAddress()"></div>

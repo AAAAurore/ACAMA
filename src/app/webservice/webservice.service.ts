@@ -16,7 +16,7 @@ export class WebserviceService {
 
   getPractitioner(): Observable<Practitioner> {
     return this.http
-      .get<Practitioner>(WebserviceService.server + '/practitioner')
+      .get<Practitioner>(WebserviceService.server + '/practitioner/111')
       .pipe(retry(1));
   }
 
