@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { WebserviceService } from 'src/app/webservice/webservice.service';
+import { QuestionnaireResponse } from 'src/app/questionnaire';
+
 
 @Component({
   selector: 'app-statistiques',
@@ -6,5 +9,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./statistiques.component.scss']
 })
 export class StatistiquesComponent {
+  responses: Array<QuestionnaireResponse> = [];
 
+  constructor(
+    public webService: WebserviceService,
+  ) {}
+
+  ngOnInit() {
+    this.loadPatientResponses()
+  }
+
+  loadPatientResponses() {
+    return this.webService.getPatientResponses().subscribe((data) => {
+      this.responses = data
+      console.log(this.responses)
+    })
+  }
 }
