@@ -6,10 +6,10 @@
         <button mat-raised-button color="primary" (click)="goToStatistiques()">Statistiques</button>
         <mat-card class="medecin">
             <mat-card-content>
-                Nom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].family : "" }}<br />
-                Prénom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].given : "" }}<br />
+                Nom : <b>{{ practitioner.name[0].family != undefined ? practitioner.name[0].family : "" }}</b><br />
+                Prénom : <b>{{ practitioner.name[0].family != undefined ? practitioner.name[0].given : "" }}</b><br />
                 Adresse :
-                    <div [innerHTML]="getAddress()"></div>
+                    <b><div [innerHTML]="getAddress()"></div></b>
                 <img class="profil" src="/assets/medecin.png"/>
             </mat-card-content>
         </mat-card>
@@ -22,7 +22,7 @@
                         {{ patient.name[0].given[0] }} {{ patient.name[0].family }}
                     </mat-card-title>
                     <mat-card-subtitle style="color: #ffffff;">
-                        Âge {{ calculAge(patient.birthDate) }}
+                        Âge : {{ calculAge(patient.birthDate) }}
                     </mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
