@@ -1,33 +1,38 @@
-<div *ngIf="isLoadingPatient || isLoadingPractitioner" style="display: block ruby; text-align: center;">
+<button mat-raised-button color="primary" (click)="goToStatistiques()">Statistiques</button>
+<div *ngIf="isLoadingPatient || isLoadingPractitioner" style="display: block ruby; text-align: center; position: absolute;">
     <mat-spinner></mat-spinner>
 </div>
-<div *ngIf="!isLoadingPatient && !isLoadingPractitioner">
-    <div style="display: flex;">
-        <button mat-raised-button color="primary" (click)="goToStatistiques()">Statistiques</button>
-        <mat-card class="medecin">
-            <mat-card-content>
-                Nom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].family : "" }}<br />
-                Prénom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].given : "" }}<br />
+<div *ngIf="!isLoadingPatient && !isLoadingPractitioner" style="display: flex;">
+    <mat-card class="medecin">
+        <mat-card-content>
+            <div style="text-align: center; color: black;">
+                Nom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].family : "" }}<br/>
+                Prénom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].given : "" }}<br/>
                 Adresse :
-                    <div [innerHTML]="getAddress()"></div>
-                <img class="profil" src="/assets/medecin.png"/>
-<div class="patients" *ngFor="let patient of patients">
-    <div class="patients">
-        <div *ngFor="let patient of patients">
-            <mat-card class="patient" routerLink="/patient/{{patient.id}}">
-                <mat-card-header>
-                    <mat-card-title *ngIf="patient.name && patient.name[0].family">
-                        {{ patient.name[0].given[0] }} {{ patient.name[0].family }}
-                    </mat-card-title>
-                    <mat-card-subtitle style="color: #ffffff;">
-                        Âge {{ calculAge(patient.birthDate) }}
-                    </mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                    <p>Date de naissance : {{ patient.birthDate | date : 'dd/MM/yyyy' }}                 {{patient.id}}</p>
-                    <button mat-raised-button (click)="createAndSendQuestionnaire($event, patient)">Send Questionnaire</button>
-                </mat-card-content>
-            </mat-card>
-        </div>
-    </div>
+                <div [innerHTML]="getAddress()"></div>
+                <img class="profil" src="/assets/medecin.png" />
+            </div>
+            <div class="patients" *ngFor="let patient of patients">
+                <div class="patients">
+                    <div *ngFor="let patient of patients">
+                        <mat-card class="patient" routerLink="/patient/{{patient.id}}">
+                            <mat-card-header>
+                                <mat-card-title *ngIf="patient.name && patient.name[0].family">
+                                    {{ patient.name[0].given[0] }} {{ patient.name[0].family }}
+                                </mat-card-title>
+                                <mat-card-subtitle>
+                                    Âge {{ calculAge(patient.birthDate) }}
+                                </mat-card-subtitle>
+                                <mat-card-subtitle>Date de naissance : {{ patient.birthDate | date : 'dd/MM/yyyy' }}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content style="display: flex; margin-left: auto;">
+                                <button mat-raised-button (click)="createAndSendQuestionnaire($event, patient)">Send
+                                    Questionnaire</button>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
 </div>

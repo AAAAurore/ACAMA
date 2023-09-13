@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WebserviceService } from 'src/app/webservice/webservice.service';
-import { Patient, Practitioner, Questionnaire } from 'src/app/questionnaire';
+import { Patient, Practitioner, Questionnaire, QuestionnaireItem, QuestionnaireResponseItem } from 'src/app/questionnaire';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,6 +12,23 @@ export class DashboardComponent {
 
   isLoadingPatient: boolean = false;
   isLoadingPractitioner: boolean = false;
+  template_item: QuestionnaireItem[] = [
+        {
+            "linkId": "1",
+            "text": "Comment allez-vous (sur une échelle de 1 à 10)",
+            "type": "integer"
+        },
+        {
+            "linkId": "2",
+            "text": "Est-ce que vous avez bu ces derniers jours?",
+            "type": "boolean"
+        },
+        {
+            "linkId": "2",
+            "text": "Avez vous de la fièvre?",
+            "type": "boolean"
+        }
+    ]
 
   practitioner: Practitioner = new Practitioner();
   patients: Array<Patient> = [];
@@ -102,8 +119,9 @@ export class DashboardComponent {
 
   fulfillQuestionnaire(id: string) {
     this.questionnaire.id = Math.floor(Math.random() * 10000000000000).toString()
-    this.questionnaire.publisher = this.practitioner.name[0].family
-    this.questionnaire.purpose = "Take care of my sweet patient"
+    this.questionnaire.publisher = this.practitioner.id
+    this.questionnaire.item = this.template_item
+    this.questionnaire.title = "Voici le questionnaire eCare"
     console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
     console.log(this.questionnaire)
     //this.questionnaire.item  = [{}]

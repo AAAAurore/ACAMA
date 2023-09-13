@@ -3,14 +3,13 @@ export class Questionnaire {
     id : string = ""
     status : string = "draft"
     publisher : string = ""
-    purpose : string = ""
+    title : string = ""
     contact : Contact[] = []
-    //item : QuestionnaireItem[] = []
+    item : QuestionnaireItem[] = []
 }
 
 export class QuestionnaireItem {
     linkId: string = ""
-    prefix: string = ""
     text: string = ""
     type: string = ""
 }
@@ -31,11 +30,7 @@ export class QuestionnaireResponse {
 export class QuestionnaireResponseItem {
     linkId: string = ""
     text: string = ""
-    answer: Answer[] = []
-}
-
-export class Answer {
-    valueString: string = ""
+    type: string = ""
 }
 
 export class Patient {

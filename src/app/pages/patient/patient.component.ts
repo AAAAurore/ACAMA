@@ -71,7 +71,7 @@ export class PatientComponent {
   fulfillQuestionnaire() {
     this.questionnaire.id = '2';
     this.questionnaire.publisher = "Dr Boucher"
-    this.questionnaire.purpose = "Take care of my sweet patient"
+    // this.questionnaire.purpose = "Take care of my sweet patient"
     this.questionnaire.contact =  [{"name":"Mister Cotelette"}]
     //this.questionnaire.item  = [{}]
   }
