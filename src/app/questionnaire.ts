@@ -5,7 +5,7 @@ export class Questionnaire {
     publisher : string = ""
     purpose : string = ""
     contact : Contact[] = []
-    item : QuestionnaireItem[] = []
+    //item : QuestionnaireItem[] = []
 }
 
 export class QuestionnaireItem {
