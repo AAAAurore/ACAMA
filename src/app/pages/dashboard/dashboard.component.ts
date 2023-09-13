@@ -10,6 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DashboardComponent {
 
+  isLoadingPatient: boolean = false;
+  isLoadingPractitioner: boolean = false;
+
   practitioner: Practitioner = new Practitioner();
   patients: Array<Patient> = [];
 
@@ -20,21 +23,26 @@ export class DashboardComponent {
   ){}
 
   ngOnInit() {
+    this.isLoadingPatient = true;
+    this.isLoadingPractitioner = true;
+
     this.loadPractitioner();
     this.loadPatients();
   }
 
   loadPractitioner() {
-    return this.webService.getPractitioner().subscribe((data : Practitioner) => {
+    this.webService.getPractitioner().subscribe((data : Practitioner) => {
       this.practitioner = data;
-      console.log(this.practitioner)
-    })
+
+      this.isLoadingPractitioner = false;
+    });
   }
 
   loadPatients() {
-    return this.webService.getPatients().subscribe((data : Patient[]) => {
+    this.webService.getPatients().subscribe((data : Patient[]) => {
       this.patients = data;
-      console.log(data[0])
+
+      this.isLoadingPatient = false;
     })
   }
 

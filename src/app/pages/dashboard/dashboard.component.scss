@@ -1,7 +1,14 @@
-.patient {
-    margin: 30px;
+.medecin {
     background-color: #673AB7;
+    border-radius: 25px;
+    color: #ffffff;
+    margin-left: auto;
+}
+
+.patient {
+    background-color: #673AB7;
+    border-radius: 10px;
     color: #ffffff;
     cursor: pointer;
-    border-radius: 10px;
+    margin: 30px;
 }

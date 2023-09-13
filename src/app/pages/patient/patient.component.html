@@ -1,1 +1,22 @@
-<p>patient works!</p>
+<div *ngIf="!isError">
+    <div *ngIf="isLoadingPatient || isLoadingPatientResponse" style="display: block ruby; text-align: center;">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="!isLoadingPatient && !isLoadingPatientResponse">
+        <mat-card class="patient">
+            <mat-card-content>
+                Nom : {{ patient.name[0].family != undefined ? patient.name[0].family : "" }}<br />
+                Prénom : {{ patient.name[0].family != undefined ? patient.name[0].given : "" }}<br />
+                Âge : {{ calculAge(patient.birthDate) }} ans<br />
+                Date de naissance : {{ patient.birthDate | date : 'dd/MM/yyyy' }}
+                <img class="profil" [src]="profil"/>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    
+</div>
+<div *ngIf="isError" class="error">
+    <img class="os" src="/assets/os.png"/>
+    Vous êtes tombé sur un os !<br />
+    (Le patient recherché n'existe pas...)
+</div>

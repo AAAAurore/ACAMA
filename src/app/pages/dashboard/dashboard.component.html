@@ -1,24 +1,34 @@
-
-<div style="display: flex;">
-    <button mat-raised-button color="primary" (click)="goToStatistiques()">Statistiques</button>
-    <div class="medecin">
-        Nom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].family : "" }}<br />
-        Prénom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].given : "" }}<br />
-        Adresse :
-            <div [innerHTML]="getAddress()"></div>
-        <img class="profil" src="/assets/medecin.png"/>
-    </div>
+<div *ngIf="isLoadingPatient || isLoadingPractitioner" style="display: block ruby; text-align: center;">
+    <mat-spinner></mat-spinner>
 </div>
-<div class="patients" *ngFor="let patient of patients">
-    <div class="patients">
-        <mat-card class="patient" routerLink="/patient/{{patient.id}}">
-            <mat-card-header>
-                <mat-card-title *ngIf="patient.name && patient.name[0].family">{{patient.name[0].given[0]}} {{patient.name[0].family}}</mat-card-title>
-                <mat-card-subtitle style="color: #ffffff;">Age {{calculAge(patient.birthDate)}}</mat-card-subtitle>
-            </mat-card-header>
+<div *ngIf="!isLoadingPatient && !isLoadingPractitioner">
+    <div style="display: flex;">
+        <button mat-raised-button color="primary" (click)="goToStatistiques()">Statistiques</button>
+        <mat-card class="medecin">
             <mat-card-content>
-                <p>Date of birth : {{patient.birthDate}}</p>
+                Nom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].family : "" }}<br />
+                Prénom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].given : "" }}<br />
+                Adresse :
+                    <div [innerHTML]="getAddress()"></div>
+                <img class="profil" src="/assets/medecin.png"/>
             </mat-card-content>
         </mat-card>
+    </div>
+    <div class="patients">
+        <div *ngFor="let patient of patients">
+            <mat-card class="patient" routerLink="/patient/{{patient.id}}">
+                <mat-card-header>
+                    <mat-card-title *ngIf="patient.name && patient.name[0].family">
+                        {{ patient.name[0].given[0] }} {{ patient.name[0].family }}
+                    </mat-card-title>
+                    <mat-card-subtitle style="color: #ffffff;">
+                        Âge {{ calculAge(patient.birthDate) }}
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>Date de naissance : {{ patient.birthDate | date : 'dd/MM/yyyy' }}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
 </div>
