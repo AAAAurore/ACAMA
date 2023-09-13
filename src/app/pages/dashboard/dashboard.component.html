@@ -1,52 +1,24 @@
-<div class="medecin">
-    Nom : {{ practitioner.name != undefined ? practitioner.name[0].family : "" }}<br />
-    Prénom : {{ practitioner.name != undefined ? practitioner.name[0].given : "" }}<br />
-    Adresse :
-        <div [innerHTML]="getAddress()"></div>
-    <img class="profil" src="/assets/medecin.png"/>
+
+<div style="display: flex;">
+    <button mat-raised-button color="primary" (click)="goToStatistiques()">Statistiques</button>
+    <div class="medecin">
+        Nom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].family : "" }}<br />
+        Prénom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].given : "" }}<br />
+        Adresse :
+            <div [innerHTML]="getAddress()"></div>
+        <img class="profil" src="/assets/medecin.png"/>
+    </div>
 </div>
-<!-- <div class="patients" *ngFor="let patient of patients"> -->
-<div class="patients">
-    <mat-card class="patient">
-        <mat-card-header>
-        <mat-card-title></mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-        <p>This card indeterminates progress bar.</p>
-        <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-        </mat-card-content>
-        <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card class="patient">
-        <mat-card-header>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-        <p>This card indeterminates progress bar.</p>
-        <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-        </mat-card-content>
-        <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card class="patient">
-        <mat-card-header>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-        <p>This card indeterminates progress bar.</p>
-        <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-        </mat-card-content>
-        <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-        </mat-card-actions>
-    </mat-card>
+<div class="patients" *ngFor="let patient of patients">
+    <div class="patients">
+        <mat-card class="patient" routerLink="/patient/{{patient.id}}">
+            <mat-card-header>
+                <mat-card-title *ngIf="patient.name && patient.name[0].family">{{patient.name[0].given[0]}} {{patient.name[0].family}}</mat-card-title>
+                <mat-card-subtitle style="color: #ffffff;">Age {{calculAge(patient.birthDate)}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Date of birth : {{patient.birthDate}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>

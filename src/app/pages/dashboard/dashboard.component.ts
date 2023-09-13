@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { WebserviceService } from 'src/app/webservice/webservice.service';
 import { Patient, Practitioner } from 'src/app/questionnaire';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +14,8 @@ export class DashboardComponent {
   patients: Array<Patient> = [];
 
   constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     public webService: WebserviceService,
   ){}
 
@@ -22,17 +25,34 @@ export class DashboardComponent {
   }
 
   loadPractitioner() {
-    return this.webService.getPractitioner().subscribe((data) => {
+    return this.webService.getPractitioner().subscribe((data : Practitioner) => {
       this.practitioner = data;
       console.log(this.practitioner)
     })
   }
 
   loadPatients() {
-    return this.webService.getPatients().subscribe((data) => {
+    return this.webService.getPatients().subscribe((data : Patient[]) => {
       this.patients = data;
-      console.log(this.patients)
+      console.log(data[0])
     })
+  }
+
+  calculAge(birthDate : string) {
+    const today = new Date();
+    const birthDateObj = new Date(birthDate);
+    let age = today.getFullYear() - birthDateObj.getFullYear();
+    const monthDiff = today.getMonth() - birthDateObj.getMonth();
+  
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDateObj.getDate())) {
+      age--;
+    }
+  
+    return age;
+  }
+
+  goToStatistiques(){
+    this.router.navigate(['statistiques'], { relativeTo: this.activatedRoute });
   }
 
   getAddress(){
