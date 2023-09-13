@@ -1,8 +1,2 @@
-<div class="header">
-    <img class="logo" src="/assets/logo.png"/>
-    <button *ngIf="!isDashboard()" mat-fab matTooltip="Primary" color="primary" aria-label="Retour à l'accueil"
-        (click)="goToDashboard()" [style]="(isStatistiques() ? 'margin-right': 'margin-left') + ' : auto;'">
-        <mat-icon>home</mat-icon>
-    </button>
-</div>
+<app-navbar></app-navbar>
 <router-outlet></router-outlet>

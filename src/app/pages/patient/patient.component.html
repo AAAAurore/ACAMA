@@ -8,7 +8,7 @@
                 Nom : {{ patient.name[0].family != undefined ? patient.name[0].family : "" }}<br />
                 Prénom : {{ patient.name[0].family != undefined ? patient.name[0].given : "" }}<br />
                 Âge : {{ calculAge(patient.birthDate) }} ans<br />
-                Date de naissance : {{ patient.birthDate | date : 'dd/MM/yyyy' }}
+                <!-- Date de naissance : {{ patient.birthDate | date : 'dd/MM/yyyy' }} -->
                 <img class="profil" [src]="profil"/>
             </mat-card-content>
         </mat-card>

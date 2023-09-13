@@ -12,13 +12,16 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PatientComponent } from './pages/patient/patient.component';
 import { StatistiquesComponent } from './pages/statistiques/statistiques.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MatToolbar, MatToolbarModule} from '@angular/material/toolbar';
+import { NavbarComponent } from './pages/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     PatientComponent,
-    StatistiquesComponent
+    StatistiquesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -28,13 +31,15 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatToolbarModule
   ],
   providers: [
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatToolbarModule
   ],
   bootstrap: [AppComponent]
 })

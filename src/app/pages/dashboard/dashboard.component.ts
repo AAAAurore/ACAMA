@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WebserviceService } from 'src/app/webservice/webservice.service';
-import { Patient, Practitioner, Questionnaire, QuestionnaireItem, QuestionnaireResponseItem } from 'src/app/questionnaire';
+import { Patient, Practitioner, Questionnaire, QuestionnaireItem} from 'src/app/questionnaire';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
