@@ -43,6 +43,7 @@ import { NgChartsModule } from 'ng2-charts';
   providers: [
     MatIconModule,
     MatButtonModule,
+    MatGridListModule,
     MatCardModule,
     MatProgressSpinnerModule,
     MatTooltipModule
