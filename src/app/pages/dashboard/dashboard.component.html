@@ -1,16 +1,18 @@
+<button mat-raised-button color="primary" (click)="goToStatistiques()">Statistiques</button>
 <div *ngIf="isLoadingPatient || isLoadingPractitioner" style="display: block ruby; text-align: center;">
     <mat-spinner></mat-spinner>
 </div>
 <div *ngIf="!isLoadingPatient && !isLoadingPractitioner">
     <div style="display: flex;">
-        <button mat-raised-button color="primary" (click)="goToStatistiques()">Statistiques</button>
         <mat-card class="medecin">
             <mat-card-content>
-                Nom : <b>{{ practitioner.name[0].family != undefined ? practitioner.name[0].family : "" }}</b><br />
-                Prénom : <b>{{ practitioner.name[0].family != undefined ? practitioner.name[0].given : "" }}</b><br />
-                Adresse :
-                    <b><div [innerHTML]="getAddress()"></div></b>
-                <img class="profil" src="/assets/medecin.png"/>
+                <div style="text-align: center; color: black;">
+                    Nom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].family : "" }}<br />
+                    Prénom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].given : "" }}<br />
+                    Adresse :
+                        <div [innerHTML]="getAddress()"></div>
+                    <img class="profil" src="/assets/medecin.png"/>
+                </div>
             </mat-card-content>
         </mat-card>
     </div>
@@ -21,12 +23,14 @@
                     <mat-card-title *ngIf="patient.name && patient.name[0].family">
                         {{ patient.name[0].given[0] }} {{ patient.name[0].family }}
                     </mat-card-title>
-                    <mat-card-subtitle style="color: #ffffff;">
-                        Âge : {{ calculAge(patient.birthDate) }}
+                    <mat-card-subtitle>
+                        Âge {{ calculAge(patient.birthDate) }}<br />
+                        Date de naissance : {{ patient.birthDate | date : 'dd/MM/yyyy' }}
                     </mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
-                    <p>Date de naissance : {{ patient.birthDate | date : 'dd/MM/yyyy' }}</p>
+                    <button mat-raised-button (click)="createAndSendQuestionnaire($event, patient)" style="margin-top: 10px;">
+                        Envoyer le questionnaire</button>
                 </mat-card-content>
             </mat-card>
         </div>

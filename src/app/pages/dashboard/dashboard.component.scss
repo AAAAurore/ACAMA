@@ -1,8 +1,11 @@
 .medecin {
-    background-color: #673AB7;
+    margin-top: 20px;
+    background-color: #d1c3e7;
     border-radius: 25px;
     color: #ffffff;
     margin-left: auto;
+    margin-right: auto;
+    width: 90%;
 }
 
 .patient {
@@ -11,4 +14,12 @@
     color: #ffffff;
     cursor: pointer;
     margin: 30px;
+}
+
+.mat-card-title {
+    color: #ffffff;
+}
+
+mat-card-subtitle {
+    color: #ffffff;
 }

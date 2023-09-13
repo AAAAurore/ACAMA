@@ -3,14 +3,13 @@ export class Questionnaire {
     id : string = ""
     status : string = "draft"
     publisher : string = ""
-    purpose : string = ""
+    title : string = ""
     contact : Contact[] = []
     item : QuestionnaireItem[] = []
 }
 
 export class QuestionnaireItem {
     linkId: string = ""
-    prefix: string = ""
     text: string = ""
     type: string = ""
 }
@@ -32,6 +31,7 @@ export class QuestionnaireResponseItem {
     linkId: string = ""
     text: string | null = ""
     answer: Answer[] = []
+    type: string = ""
 }
 
 export class Answer {
