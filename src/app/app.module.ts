@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PatientComponent } from './pages/patient/patient.component';
@@ -14,6 +16,7 @@ import { StatistiquesComponent } from './pages/statistiques/statistiques.compone
 import { HttpClientModule } from '@angular/common/http';
 import {MatToolbar, MatToolbarModule} from '@angular/material/toolbar';
 import { NavbarComponent } from './pages/navbar/navbar.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -30,16 +33,15 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
+    MatGridListModule,
     MatCardModule,
-    MatProgressSpinnerModule,
-    MatToolbarModule
+    MatProgressSpinnerModule
   ],
   providers: [
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule,
-    MatToolbarModule
+    MatProgressSpinnerModule
   ],
   bootstrap: [AppComponent]
 })

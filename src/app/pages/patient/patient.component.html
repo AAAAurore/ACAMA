@@ -3,17 +3,51 @@
         <mat-spinner></mat-spinner>
     </div>
     <div *ngIf="!isLoadingPatient && !isLoadingPatientResponse">
-        <mat-card class="patient">
-            <mat-card-content>
-                Nom : {{ patient.name[0].family != undefined ? patient.name[0].family : "" }}<br />
-                Prénom : {{ patient.name[0].family != undefined ? patient.name[0].given : "" }}<br />
-                Âge : {{ calculAge(patient.birthDate) }} ans<br />
-                <!-- Date de naissance : {{ patient.birthDate | date : 'dd/MM/yyyy' }} -->
-                <img class="profil" [src]="profil"/>
-            </mat-card-content>
-        </mat-card>
+        <div style="display: flex;">
+            <mat-card class="patient">
+                <mat-card-content>
+                    Nom : <b>{{ patient.name  && patient.name[0].family ? patient.name[0].family : "" }}</b><br />
+                    Prénom : <b>{{ patient.name && patient.name[0].given ? patient.name[0].given : "" }}</b><br />
+                    Âge : <b>{{ calculAge(patient.birthDate) }} ans</b><br />
+                    Date de naissance : <b>{{ patient.birthDate | date : 'dd/MM/yyyy' }}</b>
+                    <img class="profil" [src]="profil"/>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="reponse">
+            <div style="display: flex;">
+                Réponses à la questionnaire du patient :
+                <button mat-fab matTooltip="Actualiser les réponses" color="primary"
+                    (click)="loadPatientResponse()" style="margin-left : auto;">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+            </div>
+            <mat-card class="patient">
+                <mat-card-content>
+                    <div *ngIf="response == null || questionnaire == null">
+                        Pas de réponse du patient
+                    </div>
+                    <div *ngIf="response != null && questionnaire != null">
+                        <mat-grid-list cols="2" rowHeight="25px">
+                            <div *ngFor="let itemQuestion of questionnaire.item; let i = index">
+                                <mat-grid-tile>
+                                    <div style="left: 5px;position: absolute;">
+                                        <b>{{ itemQuestion.text }}</b>
+                                    </div>
+                                </mat-grid-tile>
+                                <mat-grid-tile>
+                                    <div style="left: 5px;position: absolute;">
+                                        <mat-icon [style]="'color: ' + (isAlerte(itemQuestion.text, getReponse(itemQuestion.type, response.item[i].answer[0])) ? 'red' : 'green') + ';'">circle</mat-icon>
+                                        {{  getReponse(itemQuestion.type, response.item[i].answer[0]) }}
+                                    </div>
+                                </mat-grid-tile>
+                            </div>
+                        </mat-grid-list>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
-    
 </div>
 <div *ngIf="isError" class="error">
     <img class="os" src="/assets/os.png"/>

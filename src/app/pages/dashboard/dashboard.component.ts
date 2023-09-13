@@ -78,7 +78,7 @@ export class DashboardComponent {
   }
 
   goToStatistiques(){
-    this.router.navigate(['statistiques'], { relativeTo: this.activatedRoute });
+    this.router.navigate(["/statistiques"], { relativeTo: this.activatedRoute });
   }
 
   getAddress(){

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { retry } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Practitioner, Patient, QuestionnaireResponse, Questionnaire } from '../questionnaire';
 
 @Injectable({
@@ -43,10 +43,16 @@ export class WebserviceService {
       .pipe(retry(1))
   }
 
+
   postQuestionnaire(data: string): Observable<Questionnaire> {
     return this.http
-    .post<Questionnaire>(WebserviceService.server + '/questionnaire', data, this.httpOptions)
-    .pipe(retry(1))
+      .post<Questionnaire>(WebserviceService.server + '/questionnaire', data, this.httpOptions)
+      .pipe(retry(1))
   }
   
+  getQuestionnaire(id: string): Observable<Questionnaire> {
+    return this.http
+      .get<Questionnaire>(WebserviceService.server + '/questionnaire/' + id)
+      .pipe(retry(1))
+  }
 }

@@ -22,23 +22,35 @@ export class QuestionnaireResponse {
     resourceType: string = "QuestionnaireResponse";
     id: string = ""
     questionnaire: string = ""
-    source: string = ""
+    source: Patient = new Patient
     status: string = "in-progress"
     item: QuestionnaireResponseItem[] = []
 }
 
 export class QuestionnaireResponseItem {
     linkId: string = ""
-    text: string = ""
+    text: string | null = ""
+    answer: Answer[] = []
     type: string = ""
+}
+
+export class Answer {
+    valueString: string = ""
+    valueBoolean: boolean | null = null;
+    valueInteger: number | null = null;
 }
 
 export class Patient {
     resourceType: string = "Patient"
+    identifier: Identifier = new Identifier
     id: string = ""
     name: Name[] = []
     gender: string = ""
     birthDate: string = ""
+}
+
+export class Identifier {
+    value: string = ""
 }
 
 export class Name {
