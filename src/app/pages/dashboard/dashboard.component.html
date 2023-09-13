@@ -7,8 +7,8 @@
         <mat-card class="medecin">
             <mat-card-content>
                 <div style="text-align: center; color: black;">
-                    Nom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].family : "" }}<br />
-                    Prénom : {{ practitioner.name[0].family != undefined ? practitioner.name[0].given : "" }}<br />
+                    Nom : <b>{{ practitioner.name[0].family != undefined ? practitioner.name[0].family : "" }}</b><br />
+                    Prénom : <b>{{ practitioner.name[0].family != undefined ? practitioner.name[0].given : "" }}</b><br />
                     Adresse :
                         <div [innerHTML]="getAddress()"></div>
                     <img class="profil" src="/assets/medecin.png"/>
@@ -24,7 +24,7 @@
                         {{ patient.name[0].given[0] }} {{ patient.name[0].family }}
                     </mat-card-title>
                     <mat-card-subtitle>
-                        Âge {{ calculAge(patient.birthDate) }}<br />
+                        Âge : {{ calculAge(patient.birthDate) }}<br />
                         Date de naissance : {{ patient.birthDate | date : 'dd/MM/yyyy' }}
                     </mat-card-subtitle>
                 </mat-card-header>
