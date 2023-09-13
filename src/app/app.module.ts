@@ -16,7 +16,7 @@ import { StatistiquesComponent } from './pages/statistiques/statistiques.compone
 import { HttpClientModule } from '@angular/common/http';
 import {MatToolbar, MatToolbarModule} from '@angular/material/toolbar';
 import { NavbarComponent } from './pages/navbar/navbar.component';
-// import { NgChartsModule } from 'ng2-charts';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
     MatCardModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
-    // NgChartsModule
+    NgChartsModule
   ],
   providers: [
     MatIconModule,
