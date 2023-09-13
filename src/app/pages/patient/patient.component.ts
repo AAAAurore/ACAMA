@@ -35,7 +35,7 @@ export class PatientComponent {
     if(idPatient){
       this.loadPatient(idPatient);
       this.loadPatientResponse('65003ac27a32ea001909459f', '65001f377a32ea0019094590');
-      this.fullfilQuestionnaire();
+      this.fulfillQuestionnaire();
       this.createQuestionnaire(JSON.stringify(this.questionnaire));
     }
   }
@@ -68,7 +68,7 @@ export class PatientComponent {
     })
   }
 
-  fullfilQuestionnaire() {
+  fulfillQuestionnaire() {
     this.questionnaire.id = '2';
     this.questionnaire.publisher = "Dr Boucher"
     this.questionnaire.purpose = "Take care of my sweet patient"

@@ -11,9 +11,7 @@
                 Adresse :
                     <div [innerHTML]="getAddress()"></div>
                 <img class="profil" src="/assets/medecin.png"/>
-            </mat-card-content>
-        </mat-card>
-    </div>
+<div class="patients" *ngFor="let patient of patients">
     <div class="patients">
         <div *ngFor="let patient of patients">
             <mat-card class="patient" routerLink="/patient/{{patient.id}}">
@@ -26,7 +24,8 @@
                     </mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
-                    <p>Date de naissance : {{ patient.birthDate | date : 'dd/MM/yyyy' }}</p>
+                    <p>Date de naissance : {{ patient.birthDate | date : 'dd/MM/yyyy' }}                 {{patient.id}}</p>
+                    <button mat-raised-button (click)="createAndSendQuestionnaire($event, patient)">Send Questionnaire</button>
                 </mat-card-content>
             </mat-card>
         </div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WebserviceService } from 'src/app/webservice/webservice.service';
-import { Patient, Practitioner } from 'src/app/questionnaire';
+import { Patient, Practitioner, Questionnaire } from 'src/app/questionnaire';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -15,12 +15,13 @@ export class DashboardComponent {
 
   practitioner: Practitioner = new Practitioner();
   patients: Array<Patient> = [];
+  questionnaire: Questionnaire = new Questionnaire();
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     public webService: WebserviceService,
-  ){}
+  ){};
 
   ngOnInit() {
     this.isLoadingPatient = true;
@@ -88,5 +89,23 @@ export class DashboardComponent {
     }
 
     return address;
+  }
+
+  createAndSendQuestionnaire(event: Event, patient: Patient) {
+    event.stopPropagation()
+    this.fulfillQuestionnaire(patient.id)
+    var data = JSON.stringify(this.questionnaire)
+    return this.webService.postQuestionnaire(data).subscribe((data) => {
+      console.log('successfully Added')
+    })
+  }
+
+  fulfillQuestionnaire(id: string) {
+    this.questionnaire.id = Math.floor(Math.random() * 10000000000000).toString()
+    this.questionnaire.publisher = this.practitioner.name[0].family
+    this.questionnaire.purpose = "Take care of my sweet patient"
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    console.log(this.questionnaire)
+    //this.questionnaire.item  = [{}]
   }
 }
