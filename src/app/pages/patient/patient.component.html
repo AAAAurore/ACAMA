@@ -22,27 +22,21 @@
                     <mat-icon>refresh</mat-icon>
                 </button>
             </div>
-            <mat-card class="patient" style="background-color: ">
+            <mat-card class="patient">
                 <mat-card-content>
                     <div *ngIf="response == null || questionnaire == null">
                         Pas de réponse du patient
                     </div>
                     <div *ngIf="response != null && questionnaire != null">
-                        <mat-grid-list cols="2" rowHeight="25px">
-                            <div *ngFor="let itemQuestion of questionnaire.item; let i = index">
-                                <mat-grid-tile>
-                                    <div style="left: 5px;position: absolute;">
-                                        <b>{{ itemQuestion.text }}</b>
-                                    </div>
-                                </mat-grid-tile>
-                                <mat-grid-tile>
-                                    <div style="left: 5px;position: absolute;">
-                                        <mat-icon [style]="'color: ' + (isAlerte(itemQuestion.text, getReponse(itemQuestion.type, response.item[i].answer[0])) ? 'red' : 'green') + ';'">circle</mat-icon>
-                                        {{  getReponse(itemQuestion.type, response.item[i].answer[0]) }}
-                                    </div>
-                                </mat-grid-tile>
+                        <div *ngFor="let itemQuestion of questionnaire.item; let i = index" style="display: flex;">
+                            <div style=" margin-top: auto; margin-bottom: auto; width: 50%;">
+                                <b>{{ itemQuestion.text }}</b>
                             </div>
-                        </mat-grid-list>
+                            <div style="display: flex; margin-top: auto; margin-bottom: auto; margin-left: 10px; width: 50%;">
+                                <mat-icon [style]="'color: ' + (isAlerte(itemQuestion.text, getReponse(itemQuestion.type, response.item[i].answer[0])) ? 'red' : 'green') + ';'">circle</mat-icon>
+                                <p style="position: relative; top:2px;">&nbsp;{{  getReponse(itemQuestion.type, response.item[i].answer[0]) }}</p>
+                            </div>
+                        </div>
                     </div>
                 </mat-card-content>
             </mat-card>

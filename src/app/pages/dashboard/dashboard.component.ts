@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { WebserviceService } from 'src/app/webservice/webservice.service';
 import { Patient, Practitioner, Questionnaire, QuestionnaireItem} from 'src/app/questionnaire';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -35,8 +34,6 @@ export class DashboardComponent {
   questionnaire: Questionnaire = new Questionnaire();
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
     public webService: WebserviceService,
   ){};
 
@@ -75,10 +72,6 @@ export class DashboardComponent {
     }
   
     return age;
-  }
-
-  goToStatistiques(){
-    this.router.navigate(["/statistiques"], { relativeTo: this.activatedRoute });
   }
 
   createAndSendQuestionnaire(event: Event) {
