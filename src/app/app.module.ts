@@ -6,14 +6,15 @@ import { AppComponent } from './app.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatGridListModule } from '@angular/material/grid-list'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PatientComponent } from './pages/patient/patient.component';
 import { StatistiquesComponent } from './pages/statistiques/statistiques.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,11 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
+    MatGridListModule,
     MatCardModule,
+    MatButtonModule,
+    NgChartsModule,
     MatProgressSpinnerModule,
-    MatTooltipModule,
     MatGridListModule
   ],
   providers: [
