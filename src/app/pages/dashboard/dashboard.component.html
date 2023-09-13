@@ -24,7 +24,7 @@
                         {{ patient.name[0].given[0] }} {{ patient.name[0].family }}
                     </mat-card-title>
                     <mat-card-subtitle>
-                        Âge : {{ calculAge(patient.birthDate) }}<br />
+                        Âge : {{ calculAge(patient.birthDate) }} ans<br />
                         Date de naissance : {{ patient.birthDate | date : 'dd/MM/yyyy' }}
                     </mat-card-subtitle>
                 </mat-card-header>
