@@ -14,7 +14,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PatientComponent } from './pages/patient/patient.component';
 import { StatistiquesComponent } from './pages/statistiques/statistiques.component';
 import { HttpClientModule } from '@angular/common/http';
-import {MatToolbar, MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { NgChartsModule } from 'ng2-charts';
 
@@ -36,14 +36,17 @@ import { NgChartsModule } from 'ng2-charts';
     MatGridListModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatTooltipModule,
     MatToolbarModule,
     NgChartsModule
   ],
   providers: [
     MatIconModule,
     MatButtonModule,
+    MatGridListModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTooltipModule
   ],
   bootstrap: [AppComponent]
 })
