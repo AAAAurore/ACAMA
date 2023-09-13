@@ -1,8 +1,15 @@
-<mat-toolbar style="border-radius: 20px; height: 8vw; background-color:#d1c3e7;">
+<mat-toolbar style="border-radius: 20px; height: 8vw; background-color:#F8DE65;">
     <img mat-icon-button class="logo" src="/assets/logo.png" routerLink="/" style="cursor: pointer;"/>
-    <button *ngIf="!isDashboard()" mat-fab matTooltip="Primary" color="primary" aria-label="Retour à l'accueil"
-        (click)="goToDashboard()" style="margin-left: 20px">
-        <mat-icon>home</mat-icon>
-    </button>
-    <button mat-raised-button color="primary" routerLink="/statistiques" style="margin-left: 20px;">Statistiques</button>
+    <button mat-raised-button routerLink="/statistiques" style="margin-left: 20px; background-color: #00C092; height: 4vw">Statistiques</button>
+    <div style="margin-left: auto;">
+        <div style="text-align: center; color: black; display: flex;">
+            <div style="margin-right: 20px;">
+                <img class="profil" src="/assets/medecin.png"/>
+            </div>
+            <div style="margin-top: auto; margin-bottom: auto; margin-right: 20px;">
+                <b style="margin-right: 10px;">{{ practitioner.name[0].family != undefined ? practitioner.name[0].family : "" }}</b><br />
+                <b style="margin-right: 20px;">{{ practitioner.name[0].family != undefined ? practitioner.name[0].given : "" }}</b><br />
+            </div>
+        </div>
+    </div>
 </mat-toolbar>

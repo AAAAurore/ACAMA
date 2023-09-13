@@ -81,43 +81,16 @@ export class DashboardComponent {
     this.router.navigate(["/statistiques"], { relativeTo: this.activatedRoute });
   }
 
-  getAddress(){
-    let address: string = "";
-
-    if(this.practitioner.address != undefined){
-      address = (this.practitioner.address.line != undefined
-        ? this.practitioner.address.line + "< br />"
-        : "");
-      address = (this.practitioner.address.city != undefined
-        ? this.practitioner.address.city + "< br />"
-        : "");
-      address = (this.practitioner.address.state != undefined
-        ? this.practitioner.address.state + "< br />"
-        : "");
-      address = (this.practitioner.address.postalCode != undefined
-        ? this.practitioner.address.postalCode + "< br />"
-        : "");
-      address = (this.practitioner.address.country != undefined
-        ? this.practitioner.address.country + "< br />"
-        : "");
-      address = (this.practitioner.telecom.value != undefined
-        ? this.practitioner.telecom.value
-        : "");
-    }
-
-    return address;
-  }
-
-  createAndSendQuestionnaire(event: Event, patient: Patient) {
+  createAndSendQuestionnaire(event: Event) {
     event.stopPropagation()
-    this.fulfillQuestionnaire(patient.id)
+    this.fulfillQuestionnaire()
     var data = JSON.stringify(this.questionnaire)
     return this.webService.postQuestionnaire(data).subscribe((data) => {
       console.log('successfully Added')
     })
   }
 
-  fulfillQuestionnaire(id: string) {
+  fulfillQuestionnaire() {
     this.questionnaire.id = Math.floor(Math.random() * 10000000000000).toString()
     this.questionnaire.publisher = this.practitioner.id
     this.questionnaire.item = this.template_item
