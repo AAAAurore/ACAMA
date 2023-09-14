@@ -16,7 +16,13 @@ body {
 .logo {
     display: flex;
     margin-top: 8px;
+    transition: transform .2s;
     width: 15vw;
+}
+
+.logo:hover {
+    border-radius: 10px;
+    transform: scale(1.2);
 }
 
 .profil {
