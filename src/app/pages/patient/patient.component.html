@@ -17,12 +17,12 @@
         <div class="reponse">
             <div style="display: flex;">
                 Réponses à la questionnaire du patient :
-                <button mat-fab matTooltip="Actualiser les réponses" color="primary"
-                    (click)="loadPatientResponse()" style="margin-left : auto;">
+                <button mat-fab matTooltip="Actualiser les réponses"
+                    (click)="loadPatientResponse()" style="margin-left : auto; background-color:#00C092;">
                     <mat-icon>refresh</mat-icon>
                 </button>
             </div>
-            <mat-card class="patient">
+            <mat-card class="patient" style="background-color: #156062">
                 <mat-card-content>
                     <div *ngIf="response == null || questionnaire == null">
                         Pas de réponse du patient

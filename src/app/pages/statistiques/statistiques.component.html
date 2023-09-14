@@ -1,16 +1,22 @@
 <div>
     <mat-card class="backgroundCard">
         <mat-card-header>
-            <h1> Statistiques sur les réponses aux questionnaire Post-Opératoire J+1 </h1>
+            <h1 class="colorWhite"> Statistiques sur les réponses aux questionnaire Post-Opératoire J+1 </h1>
         </mat-card-header>
         <mat-card-content>
             <hr>
-            <mat-grid-list cols="2" rowHeight="3:1">
+            <mat-grid-list cols="2" rowHeight="1:0.5">
+                <mat-grid-tile>
+                    <canvas  id="StateChart" >{{ stateChart }}</canvas>
+                </mat-grid-tile>
                 <mat-grid-tile>
                     <canvas  id="FeverChart" >{{ feverChart }}</canvas>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    <canvas  id="MyChart" >{{ chart }}</canvas>
+                    <canvas  id="BleedingChart" >{{ bleedingChart }}</canvas>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <canvas  id="ContactChart" >{{ contactChart }}</canvas>
                 </mat-grid-tile>
             </mat-grid-list>
         </mat-card-content>
