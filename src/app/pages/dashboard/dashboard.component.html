@@ -2,8 +2,11 @@
     <mat-spinner></mat-spinner>
 </div>
 <div *ngIf="!isLoadingPatient && !isLoadingPractitioner">
-    <button mat-raised-button (click)="createAndSendQuestionnaire($event)" style="margin-top: 10px;">
-        Envoyer le questionnaire</button>
+    <button mat-raised-button src="/assets/survey.png" (click)="createAndSendQuestionnaire($event)"
+        style="background-color: #00C092; margin-left: 20px; margin-top: 20px;">
+        <mat-icon>list_alt</mat-icon>
+        &nbsp;Envoyer le questionnaire
+        </button>
     <div class="patients">
         <div *ngFor="let patient of patients">
             <mat-card class="patient" routerLink="/patient/{{patient.id}}">
