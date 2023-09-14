@@ -12,22 +12,27 @@ export class DashboardComponent {
   isLoadingPatient: boolean = false;
   isLoadingPractitioner: boolean = false;
   template_item: QuestionnaireItem[] = [
-        {
-            "linkId": "1",
-            "text": "Comment allez-vous (sur une échelle de 1 à 10)",
-            "type": "integer"
-        },
-        {
-            "linkId": "2",
-            "text": "Est-ce que vous avez bu ces derniers jours?",
-            "type": "boolean"
-        },
-        {
-            "linkId": "2",
-            "text": "Avez vous de la fièvre?",
-            "type": "boolean"
-        }
-    ]
+    {
+        "linkId": "1",
+        "text": "Comment allez-vous (sur une échelle de 1 à 10)",
+        "type": "integer"
+    },
+    {
+        "linkId": "2",
+        "text": "Est-ce que vous avez bu ces derniers jours?",
+        "type": "boolean"
+    },
+    {
+        "linkId": "3",
+        "text": "Avez vous de la fièvre?",
+        "type": "boolean"
+    },
+    {
+        "linkId":"4",
+        "text":"Souhaitez-vous parler à un médecin ou une infirmière ?",
+        "type":"boolean"
+    }
+]
 
   practitioner: Practitioner = new Practitioner();
   patients: Array<Patient> = [];
@@ -90,6 +95,5 @@ export class DashboardComponent {
     this.questionnaire.title = "Voici le questionnaire eCare"
     console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
     console.log(this.questionnaire)
-    //this.questionnaire.item  = [{}]
   }
 }
