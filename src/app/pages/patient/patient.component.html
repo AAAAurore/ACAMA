@@ -16,13 +16,9 @@
         </div>
         <div class="reponse">
             <div style="display: flex;">
-                Réponses à la questionnaire du patient :
-                <button mat-fab matTooltip="Actualiser les réponses"
-                    (click)="loadPatientResponse()" style="margin-left : auto; background-color:#00C092;">
-                    <mat-icon>refresh</mat-icon>
-                </button>
+                <h2>Réponses au questionnaire du patient :</h2>
             </div>
-            <mat-card class="patient" style="background-color: #156062">
+            <mat-card class="patient">
                 <mat-card-content>
                     <div *ngIf="response == null || questionnaire == null">
                         Pas de réponse du patient
@@ -33,7 +29,7 @@
                                 <b>{{ itemQuestion.text }}</b>
                             </div>
                             <div style="display: flex; margin-top: auto; margin-bottom: auto; margin-left: 10px; width: 50%;">
-                                <mat-icon [style]="'color: ' + (isAlerte(itemQuestion.text, getReponse(itemQuestion.type, response.item[i].answer[0])) ? 'red' : 'green') + ';'">circle</mat-icon>
+                                <mat-icon [style]="'color: ' + (isAlerte(itemQuestion.text, getReponse(itemQuestion.type, response.item[i].answer[0])) ? '#FB8960' : '#00C092') + ';'">circle</mat-icon>
                                 <p style="position: relative; top:2px;">&nbsp;{{  getReponse(itemQuestion.type, response.item[i].answer[0]) }}</p>
                             </div>
                         </div>

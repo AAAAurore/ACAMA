@@ -50,9 +50,9 @@ export class WebserviceService {
       .pipe(retry(1))
   }
   
-  getQuestionnaire(id: string): Observable<Questionnaire> {
+  getQuestionnaires(): Observable<Questionnaire[]> {
     return this.http
-      .get<Questionnaire>(WebserviceService.server + '/questionnaire/' + id)
+      .get<Questionnaire[]>(WebserviceService.server + '/questionnaire')
       .pipe(retry(1))
   }
 }

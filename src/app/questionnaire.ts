@@ -1,7 +1,7 @@
 export class Questionnaire {
     resourceType : string = "Questionnaire"
     id : string = ""
-    status : string = "draft"
+    status : string = "active"
     publisher : string = ""
     title : string = ""
     contact : Contact[] = []

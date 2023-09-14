@@ -36,9 +36,6 @@ export class PatientComponent {
     
     if(id){
       this.idPatient = id;
-
-      this.idQuestionnaire = "65003ac27a32ea001909459f";
-
       this.loadPatient(this.idPatient);
       this.loadQuestionnaire();
       this.loadPatientResponse();
@@ -59,8 +56,11 @@ export class PatientComponent {
   }
 
   loadQuestionnaire(){
-    this.webService.getQuestionnaire(this.idQuestionnaire).subscribe((data) => {
-      this.questionnaire = data;
+    this.webService.getQuestionnaires().subscribe((data) => {
+      this.questionnaire = data.filter((q) => 
+      q.publisher === '111' &&
+      q.status === 'retired'
+      )[0]
     },
     () => {
       this.questionnaire = null;
@@ -69,10 +69,11 @@ export class PatientComponent {
 
   loadPatientResponse() {
     this.webService.getPatientResponses().subscribe((data) => {
-      let responses: QuestionnaireResponse[] = data.filter(q => q.questionnaire == this.idQuestionnaire
+      let responses: QuestionnaireResponse[] = data.filter(q => q.questionnaire == this.questionnaire?.id
                                                                 && q.source
                                                                 && q.source.identifier
                                                                 && q.source.identifier.value == this.idPatient
+                                                                && q.status === 'completed'
                                                 );
       this.response = responses[responses.length - 1];
       
