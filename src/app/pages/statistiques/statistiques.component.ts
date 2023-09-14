@@ -14,6 +14,8 @@ export class StatistiquesComponent {
     public webService: WebserviceService,
   ) {}
 
+  columns: number = 2;
+
   public responses: QuestionnaireResponse[] = [];
 
   public chart: any;
@@ -36,7 +38,9 @@ export class StatistiquesComponent {
 
 
   ngOnInit() {
-    this.loadPatientResponses()
+    this.loadPatientResponses();
+
+    this.columns = (window.innerWidth <= 900) ? 1 : 2;
   }
 
   loadPatientResponses() {
@@ -234,5 +238,9 @@ export class StatistiquesComponent {
         }
       }
     })
+  }
+
+  onResize(event: any) {
+    this.columns = (event.target.innerWidth <= 900) ? 1 : 2;
   }
 }
