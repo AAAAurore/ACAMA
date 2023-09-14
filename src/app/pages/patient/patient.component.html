@@ -10,7 +10,7 @@
                     Prénom : <b>{{ patient.name && patient.name[0].given ? patient.name[0].given : "" }}</b><br />
                     Âge : <b>{{ calculAge(patient.birthDate) }} ans</b><br />
                     Date de naissance : <b>{{ patient.birthDate | date : 'dd/MM/yyyy' }}</b>
-                    <img class="profil" [src]="profil"/>
+                    <img class="profilPatient" [src]="profil"/>
                 </mat-card-content>
             </mat-card>
         </div>

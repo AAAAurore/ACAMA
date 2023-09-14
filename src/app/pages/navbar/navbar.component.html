@@ -1,7 +1,10 @@
 <div *ngIf="!isLoadingPractitioner">
-    <mat-toolbar style="border-radius: 20px; height: 8vw; background-color:#F8DE65;">
+    <mat-toolbar style="border-radius: 20px; height: 100px; background-color:#F8DE65;">
         <img mat-icon-button class="logo" src="/assets/logo.png" routerLink="/" style="cursor: pointer;"/>
-        <button mat-raised-button routerLink="/statistiques" style="margin-left: 20px; background-color: #00C092; height: 4vw">Statistiques</button>
+        <button mat-fab matTooltip="Accéder aux statistiques" routerLink="/statistiques"
+        style="background-color: #00C092; margin-left: 20px;">
+            <mat-icon>bar_chart</mat-icon>
+        </button>
         <div style="margin-left: auto;">
             <div style="text-align: center; color: black; display: flex;">
                 <div style="margin-right: 20px;">
