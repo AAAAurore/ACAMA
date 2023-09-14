@@ -14,63 +14,40 @@ export class StatistiquesComponent {
     public webService: WebserviceService,
   ) {}
 
+  columns: number = 2;
+
   public responses: QuestionnaireResponse[] = [];
 
   public chart: any;
 
   public feverChart: any;
+  public feverChartData: Number[] = [];
   public feverAnswers: Boolean[] = [];
 
   public stateChart: any;
+  public stateChartData: Number[] = [];
   public stateAnswers: Number[] = [];
 
   public bleedingChart: any;
+  public bleedingChartData: Number[] = [];
   public bleedingAnswers: Boolean[] = [];
 
   public contactChart: any;
+  public contactChartData: Number[] = [];
   public contactAnswers: Boolean[] = [];
 
 
   ngOnInit() {
-    this.loadPatientResponses()
-    this.createChart()
-    this.createFeverChart()
+    this.loadPatientResponses();
+
+    this.columns = (window.innerWidth <= 900) ? 1 : 2;
   }
 
   loadPatientResponses() {
     return (this.webService.getPatientResponses()).subscribe((data) => {
       this.responses = data;
-      this.treatAnswers()
+      this.treatAnswers();
     })
-  }
-
-  createChart(){
-    this.chart = new Chart("MyChart", {
-      type: 'bar', //this denotes tha type of chart
-
-      data: {// values on X-Axis
-        labels: ['2022-05-10', '2022-05-11', '2022-05-12','2022-05-13',
-								 '2022-05-14', '2022-05-15', '2022-05-16','2022-05-17', ], 
-	       datasets: [
-          {
-            label: "Sales",
-            data: ['467','576', '572', '79', '92',
-								 '574', '573', '576'],
-            backgroundColor: 'blue'
-          },
-          {
-            label: "Profit",
-            data: ['542', '542', '536', '327', '17',
-									 '0.00', '538', '541'],
-            backgroundColor: 'limegreen'
-          }  
-        ]
-      },
-      options: {
-        aspectRatio:2.5
-      }
-      
-    });
   }
 
   treatAnswers() {
@@ -93,10 +70,28 @@ export class StatistiquesComponent {
         }
       });
     })
-    
-    console.log(typeof(this.bleedingAnswers.filter((ba) => !ba).length))
-  }
 
+    this.feverChartData = [this.feverAnswers.filter((ba) => ba).length, this.feverAnswers.filter((ba) => !ba).length]
+    this.stateChartData = [
+      this.stateAnswers.filter((ba) => ba === 1).length,
+      this.stateAnswers.filter((ba) => ba === 2).length,
+      this.stateAnswers.filter((ba) => ba === 3).length,
+      this.stateAnswers.filter((ba) => ba === 4).length,
+      this.stateAnswers.filter((ba) => ba === 5).length,
+      this.stateAnswers.filter((ba) => ba === 6).length,
+      this.stateAnswers.filter((ba) => ba === 7).length,
+      this.stateAnswers.filter((ba) => ba === 8).length,
+      this.stateAnswers.filter((ba) => ba === 9).length,
+      this.stateAnswers.filter((ba) => ba === 10).length
+    ]
+    this.bleedingChartData = [this.bleedingAnswers.filter((ba) => ba).length, this.bleedingAnswers.filter((ba) => !ba).length]
+    this.contactChartData = [this.contactAnswers.filter((ba) => ba).length, this.contactAnswers.filter((ba) => !ba).length]
+
+    this.createStateChart()
+    this.createFeverChart()
+    this.createBleedingChart()
+    this.createContactChart()
+  }
 
   createFeverChart() {
     this.feverChart = new Chart("FeverChart", {
@@ -109,15 +104,81 @@ export class StatistiquesComponent {
         ],
         datasets: [{
           label: 'FeverChart',
-          data: [
-            this.feverAnswers.filter((ba) => ba).length,
-            //this.feverAnswers.filter((ba) => !ba).length,
-            //11,
-            12
-          ],
+          data: this.feverChartData,
           backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
+            '#FB8960',
+            '#FFBBAB',
+          ],
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        aspectRatio:2.5, 
+        plugins: {
+          legend: {
+            labels: {
+              color: 'white', 
+            },
+            position: 'right',
+          },
+          title: {
+            display: true,
+            color: 'white',
+            text: 'Nombre de personne ayant répondu avoir de la fièvre : ',
+          }
+        }
+      }
+    })
+  }
+
+  createStateChart() {
+    this.chart = new Chart("StateChart", {
+      type: 'bar',
+
+      data: {
+        labels: [1,2,3,4,5,6,7,8,9,10], 
+	       datasets: [
+          {
+            label: "Etat du patient",
+            data: this.stateChartData,
+            backgroundColor: '#F8DE65'
+          },
+        ]
+      },
+      options: {
+        aspectRatio:2.5,
+        plugins: {
+          legend: {
+            labels: {
+              color: 'white', 
+            },
+          },
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Nombre de personne ayant indiqué sur une échelle de 1 à 10 leur état de santé : ',
+          },
+        },
+      }
+      
+    });
+  }
+
+  createBleedingChart() {
+    this.bleedingChart = new Chart("BleedingChart", {
+      type: 'doughnut',
+
+      data: {
+        labels: [
+          'Oui',
+          'Non'
+        ],
+        datasets: [{
+          label: 'BleedingChart',
+          data: this.bleedingChartData,
+          backgroundColor: [
+            '#FB8960',
+            '#FFBBAB',
           ],
           hoverOffset: 4
         }]
@@ -126,14 +187,60 @@ export class StatistiquesComponent {
         aspectRatio:2.5,
         plugins: {
           legend: {
+            labels: {
+              color: 'white', 
+            },
             position: 'right'
           },
           title: {
+            color: 'white',
             display: true,
-            text: 'Nombre de personne ayant répondu avoir de la fièvre : ',
+            text: 'Nombre de personne ayant répondu avoir des saignements : ',
           }
         }
       }
     })
+  }
+
+  createContactChart() {
+    this.contactChart = new Chart("ContactChart", {
+      type: 'doughnut',
+
+      data: {
+        labels: [
+          'Oui',
+          'Non'
+        ],
+        datasets: [{
+          label: 'ContactChart',
+          data: this.contactChartData,
+          backgroundColor: [
+            '#FB8960',
+            '#FFBBAB',
+          ],
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        aspectRatio:2.5,
+        plugins: {
+          legend: {
+            labels: {
+              color: 'white', 
+            },
+            position: 'right'
+          },
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Nombre de personne ayant répondu avoir besoin de contacter un professionnel de santé : ',
+          }
+        }
+      }
+    })
+  }
+
+  onResize(event: any) {
+    this.columns = (event.target.innerWidth <= 900) ? 1 : 2;
   }
 }
